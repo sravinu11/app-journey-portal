@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamara HR App Journey & Process Flow</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+.header{
+    background:linear-gradient(135deg,#0f172a,#1d4ed8);
+    color:white;
+    padding:20px 35px;
+}
+
+.header h1{
+    font-size:30px;
+}
+
+.header p{
+    opacity:.9;
+    margin-top:5px;
+}
+
+.container{
+    padding:20px;
+}
+
+.portal-layout{
+    display:flex;
+    gap:20px;
+    min-height:85vh;
+}
+
+.left-panel{
+    width:320px;
+}
+
+.menu-title{
+    background:#0f172a;
+    color:white;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+    font-weight:600;
+}
+
+.menu-card{
+    background:white;
+    padding:18px;
+    border-radius:15px;
+    margin-bottom:15px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    transition:.3s;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.menu-card:hover{
+    transform:translateX(5px);
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.menu-icon{
+    width:55px;
+    height:55px;
+    background:#eff6ff;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+}
+
+.menu-card h3{
+    color:#0f172a;
+    font-size:16px;
+}
+
+.menu-card p{
+    color:#64748b;
+    font-size:13px;
+    margin-top:4px;
+}
+
+.viewer-panel{
+    flex:1;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.viewer-header{
+    background:#0f172a;
+    color:white;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.badge{
+    background:#2563eb;
+    padding:6px 12px;
+    border-radius:30px;
+    font-size:12px;
+}
+
+.placeholder{
+    text-align:center;
+    padding:150px 20px;
+}
+
+.placeholder h2{
+    color:#334155;
+}
+
+.placeholder p{
+    color:#64748b;
+    margin-top:10px;
+}
+
+iframe{
+    width:100%;
+    height:900px;
+    border:none;
+    display:none;
+}
+
+.footer{
+    text-align:center;
+    padding:15px;
+    color:#64748b;
+    font-size:13px;
+}
+
+/* Modal */
+
+.modal{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal-content{
+    background:white;
+    width:400px;
+    max-width:90%;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+}
+
+.modal-content h2{
+    color:#0f172a;
+    margin-bottom:10px;
+}
+
+.modal-content p{
+    color:#64748b;
+    margin-bottom:20px;
+}
+
+.modal-content input{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.modal-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.modal-buttons button{
+    flex:1;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.btn-cancel{
+    background:#e5e7eb;
+}
+
+.btn-access{
+    background:#2563eb;
+    color:white;
+}
+
+#errorMsg{
+    margin-top:10px;
+    color:red;
+    font-size:13px;
+}
+
+@media(max-width:992px){
+
+    .portal-layout{
+        flex-direction:column;
+    }
+
+    .left-panel{
+        width:100%;
+    }
+
+    iframe{
+        height:650px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>App Journey & Process Flow Portal</h1>
+    <p>Centralized repository for process journeys and documentation</p>
+</div>
+
+<div class="container">
+
+
+<div class="portal-layout">
+
+    <div class="left-panel">
+
+        <div class="menu-title">
+            Available Documents
+        </div>
+
+        <div class="menu-card" onclick="openPDF('sec')">
+            <div class="menu-icon">🔒</div>
+            <div>
+                <h3>SEC Journey</h3>
+                <p>Security Application Flow</p>
+            </div>
+        </div>
+
+        <div class="menu-card" onclick="openPDF('nonsec')">
+            <div class="menu-icon">📄</div>
+            <div>
+                <h3>NON SEC Journey</h3>
+                <p>Non Security Application Flow</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="viewer-panel">
+
+        <div class="viewer-header">
+            <span id="title">Document Viewer</span>
+            <span class="badge">Latest Version</span>
+        </div>
+
+        <div class="placeholder" id="placeholder">
+            <h2>Select a Document</h2>
+            <p>Choose SEC or NON SEC from the left panel.</p>
+        </div>
+
+        <iframe id="pdfViewer"></iframe>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<div class="footer">
+    © 2026 App Journey & Process Flow Portal
+</div>
+
+<!-- Password Modal -->
+
+<div id="passwordModal" class="modal">
+
+```
+<div class="modal-content">
+
+    <h2>Secure Access</h2>
+
+    <p id="modalTitle">
+        Enter password to continue
+    </p>
+
+    <input
+        type="password"
+        id="passwordInput"
+        placeholder="Enter Password">
+
+    <div class="modal-buttons">
+
+        <button
+            class="btn-cancel"
+            onclick="closeModal()">
+            Cancel
+        </button>
+
+        <button
+            class="btn-access"
+            onclick="validatePassword()">
+            Access
+        </button>
+
+    </div>
+
+    <div id="errorMsg"></div>
+
+</div>
+```
+
+</div>
+
+<script>
+
+const SEC_FILE_ID = "1bGBb5f57ivEhYorMAux7qBbdzgwHyLoS";
+const NONSEC_FILE_ID = "17V_XGnzXrldKnGmLbIoGFmvWq22Zxq1D";
+
+const SEC_PASSWORD = "secapp";
+const NONSEC_PASSWORD = "nonsecapp123";
+
+let selectedType = "";
+
+function openPDF(type){
+
+    selectedType = type;
+
+    document.getElementById("passwordInput").value = "";
+    document.getElementById("errorMsg").innerHTML = "";
+
+    if(type === "sec"){
+        document.getElementById("modalTitle").innerHTML =
+        "Enter password for SEC Process Flow";
+    }else{
+        document.getElementById("modalTitle").innerHTML =
+        "Enter password for NON SEC Process Flow";
+    }
+
+    document.getElementById("passwordModal").style.display = "flex";
+}
+
+function closeModal(){
+    document.getElementById("passwordModal").style.display = "none";
+}
+
+function validatePassword(){
+
+    const enteredPassword =
+    document.getElementById("passwordInput").value;
+
+    let correctPassword = "";
+
+    if(selectedType === "sec"){
+        correctPassword = SEC_PASSWORD;
+    }else{
+        correctPassword = NONSEC_PASSWORD;
+    }
+
+    if(enteredPassword !== correctPassword){
+
+        document.getElementById("errorMsg").innerHTML =
+        "Invalid Password";
+
+        return;
+    }
+
+    closeModal();
+
+    let fileId;
+    let title;
+
+    if(selectedType === "sec"){
+        fileId = SEC_FILE_ID;
+        title = "App Journey & Process Flow - SEC";
+    }else{
+        fileId = NONSEC_FILE_ID;
+        title = "App Journey & Process Flow - NON SEC";
+    }
+
+    const url =
+    `https://drive.google.com/file/d/${fileId}/preview`;
+
+    document.getElementById("title").innerText = title;
+
+    document.getElementById("placeholder").style.display = "none";
+
+    const viewer = document.getElementById("pdfViewer");
+
+    viewer.style.display = "block";
+    viewer.src = url;
+}
+
+document.addEventListener("keydown", function(event){
+
+    if(
+        event.key === "Enter" &&
+        document.getElementById("passwordModal").style.display === "flex"
+    ){
+        validatePassword();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
