@@ -20,7 +20,7 @@
     --brand-lt: #fde8ee;
     --navy:     #0f172a;
     --navy2:    #1e293b;
-    --blue:     #2563eb;
+    --blue:     #0094D9;
     --blue-lt:  #eff6ff;
     --slate:    #64748b;
     --border:   #e2e8f0;
@@ -34,7 +34,7 @@
 body { background: var(--bg); min-height: 100vh; }
 
 .header {
-    background: linear-gradient(135deg, var(--navy) 0%, #1a2f5e 60%, #0f2a4a 100%);
+    background: linear-gradient(135deg, var(--navy) 0%, #006fa3 60%, #005f8a 100%);
     padding: 0 36px;
     display: flex;
     align-items: center;
@@ -70,6 +70,13 @@ body { background: var(--bg); min-height: 100vh; }
     justify-content: center;
     box-shadow: 0 4px 16px rgba(0,0,0,.25);
     flex-shrink: 0;
+}
+
+.logo-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,.2);
+    margin: 0 4px;
 }
 
 .header-text h1 {
@@ -212,7 +219,7 @@ body { background: var(--bg); min-height: 100vh; }
 }
 
 .info-card {
-    background: linear-gradient(135deg, var(--navy), #1a3a6b);
+    background: linear-gradient(135deg, var(--navy), #0077a8);
     border-radius: var(--radius);
     padding: 20px;
     color: white;
@@ -246,7 +253,7 @@ body { background: var(--bg); min-height: 100vh; }
 }
 
 .viewer-header {
-    background: linear-gradient(135deg, var(--navy), #1a2f5e);
+    background: linear-gradient(135deg, var(--navy), #006fa3);
     color: white;
     padding: 18px 26px;
     display: flex;
@@ -284,7 +291,7 @@ body { background: var(--bg); min-height: 100vh; }
     font-weight: 600;
 }
 
-.badge-blue  { background: rgba(37,99,235,.35); border: 1px solid rgba(37,99,235,.5); color: #93c5fd; }
+.badge-blue  { background: rgba(0,148,217,.35); border: 1px solid rgba(0,148,217,.5); color: #7dd3f0; }
 .badge-green { background: rgba(34,197,94,.2); border: 1px solid rgba(34,197,94,.4); color: #86efac; }
 
 .placeholder {
@@ -407,6 +414,7 @@ iframe {
     background: linear-gradient(135deg, var(--brand-dk), var(--brand));
     padding: 28px 28px 24px;
     text-align: center;
+    position: relative;
 }
 
 .modal-brand-logo {
@@ -516,17 +524,16 @@ iframe {
 <header class="header">
     <div class="header-brand">
         <div class="logo-wrap">
-            <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="32" cy="18" r="10" fill="#e8194b"/>
-                <circle cx="68" cy="18" r="10" fill="#e8194b"/>
-                <path d="M10 88 L32 42 L54 88 Z" fill="#e8194b"/>
-                <path d="M46 88 L68 42 L90 88 Z" fill="#e8194b"/>
-            </svg>
+            <img src="https://raw.githubusercontent.com/sravinu11/app-journey-portal/main/hamara%20hr.png" alt="Hamara HR Logo" style="width:44px;height:44px;object-fit:contain;border-radius:10px;">
         </div>
         <div class="header-text">
             <h1>Hamara HR</h1>
             <p>App Journey &amp; Process Flow Portal</p>
         </div>
+    </div>
+    <div class="logo-divider"></div>
+    <div class="logo-wrap" style="width:auto; padding:8px 16px; border-radius:14px;">
+        <img src="https://raw.githubusercontent.com/sravinu11/app-journey-portal/main/quess-logo.png" alt="Quess Logo" style="height:42px; width:auto; display:block;">
     </div>
     <div class="header-meta">
         <span class="header-pill live"><span class="live-dot"></span>Portal Active</span>
@@ -545,7 +552,7 @@ iframe {
             <div class="menu-icon sec-icon">🔒</div>
             <div class="menu-info">
                 <h3>SEC Journey</h3>
-                <p>Sec Application Flow</p>
+                <p>Security Application Flow</p>
                 <span class="menu-badge">Protected</span>
             </div>
         </div>
@@ -554,7 +561,7 @@ iframe {
             <div class="menu-icon nsec-icon">📄</div>
             <div class="menu-info">
                 <h3>NON SEC Journey</h3>
-                <p>Non SEC Application Flow</p>
+                <p>Non-Security Application Flow</p>
                 <span class="menu-badge">Protected</span>
             </div>
         </div>
@@ -614,12 +621,7 @@ iframe {
 
 <footer class="footer">
     <div class="footer-left">
-        <svg class="footer-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="32" cy="18" r="10" fill="#e8194b"/>
-            <circle cx="68" cy="18" r="10" fill="#e8194b"/>
-            <path d="M10 88 L32 42 L54 88 Z" fill="#e8194b"/>
-            <path d="M46 88 L68 42 L90 88 Z" fill="#e8194b"/>
-        </svg>
+        <img src="https://raw.githubusercontent.com/sravinu11/app-journey-portal/main/hamara%20hr.png" alt="Hamara HR" class="footer-logo" style="object-fit:contain;">
         <p><span>Hamara HR</span> · App Journey &amp; Process Flow Portal</p>
     </div>
     <p style="font-size:12px;color:#94a3b8;">© 2026 All rights reserved</p>
@@ -630,12 +632,7 @@ iframe {
 
         <div class="modal-top">
             <div class="modal-brand-logo">
-                <svg width="44" height="44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="32" cy="18" r="10" fill="#e8194b"/>
-                    <circle cx="68" cy="18" r="10" fill="#e8194b"/>
-                    <path d="M10 88 L32 42 L54 88 Z" fill="#e8194b"/>
-                    <path d="M46 88 L68 42 L90 88 Z" fill="#e8194b"/>
-                </svg>
+                <img src="https://raw.githubusercontent.com/sravinu11/app-journey-portal/main/hamara%20hr.png" alt="Hamara HR" style="width:44px;height:44px;object-fit:contain;border-radius:10px;">
             </div>
             <h2>Secure Access</h2>
             <p id="modalTitle">Enter password to continue</p>
